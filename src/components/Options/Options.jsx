@@ -1,6 +1,11 @@
-import { useState } from "react";
 import css from "./Options.module.css";
-export default function Options({}) {
+
+export default function Options({
+  handleGoodClick,
+  handleNeutralClick,
+  handleBadClick,
+  handleReset,
+}) {
   return (
     <div className={css.container}>
       <button onClick={handleGoodClick}>Good</button>

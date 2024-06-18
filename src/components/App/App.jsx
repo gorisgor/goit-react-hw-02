@@ -1,5 +1,4 @@
 import { useState } from "react";
-
 import Feedback from "../Feedback/Feedback";
 import Options from "../Options/Options";
 import Description from "../Description/Description";
@@ -12,39 +11,45 @@ export default function App() {
     bad: 0,
   });
 
-  const handleGoodClick = () => {
+  function handleGoodClick() {
     setState((prevState) => ({
       ...prevState,
       good: prevState.good + 1,
     }));
-  };
+  }
 
-  const handleNeutralClick = () => {
+  function handleNeutralClick() {
     setState((prevState) => ({
       ...prevState,
       neutral: prevState.neutral + 1,
     }));
-  };
+  }
 
-  const handleBadClick = () => {
+  function handleBadClick() {
     setState((prevState) => ({
       ...prevState,
       bad: prevState.bad + 1,
     }));
-  };
-  const handleReset = () => {
+  }
+
+  function handleReset() {
     setState({
       good: 0,
       neutral: 0,
       bad: 0,
     });
-  };
+  }
 
   return (
     <div className={css.container}>
       <Description />
-      <Options {} />
-      <Feedback />
+      <Options
+        handleGoodClick={handleGoodClick}
+        handleNeutralClick={handleNeutralClick}
+        handleBadClick={handleBadClick}
+        handleReset={handleReset}
+      />
+      <Feedback state={state} />
     </div>
   );
 }
